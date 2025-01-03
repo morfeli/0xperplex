@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "../../components/ThemeProvider";
-
 const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+
+import OxPerplexWallpaper2 from "../../public/assets/Oxperplex-bgwallpaper2.png";
+import { WallpaperProvider } from "../../components/Wallpaper/WallpaperProvider";
 
 export const metadata: Metadata = {
   title: "0xperplex",
   description:
-    "An AI-powered answer engine with RAG implemenation, built with love.",
+    "An AI-powered answer engine with RAG implementation, built with love.",
 };
 
 export default function RootLayout({
@@ -19,14 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <WallpaperProvider defaultWallpaper={OxPerplexWallpaper2}>
           {children}
-        </ThemeProvider>
+        </WallpaperProvider>
       </body>
     </html>
   );

@@ -4,13 +4,17 @@ import { SearchBar } from "../../components/SearchBar";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className=" flex flex-col">
       <Nav />
-      <main className="flex-grow flex flex-col items-center justify-center p-24">
-        <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
-          <h1 className="text-4xl font-bold mb-8 text-center">
-            0xperplex answer engine
+      <main className="flex-grow flex flex-col p-4 font-mono text-sm z-10 space-y-10 fade-in">
+        <div className="flex flex-col items-start">
+          <h1 className="text-4xl font-bold  text-center text-white">
+            0xperplex
           </h1>
+          <p className="text-white">A space-focused RAG answer engine</p>
+        </div>
+
+        <div className="w-full max-w-[1400px] mx-auto">
           <SearchBar />
           <ResultsArea />
         </div>
