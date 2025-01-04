@@ -54,7 +54,7 @@ export function WallpaperCarousel({
           {wallpapers.map((wallpaper) => (
             <CarouselItem key={wallpaper.alt} className="basis-1/3">
               <div
-                className="relative aspect-square overflow-hidden rounded-md cursor-pointer w-[100%] h-10 md:h-16 transition-all duration-500"
+                className="relative aspect-square overflow-hidden rounded-xl cursor-pointer w-[100%] h-10 md:h-16 transition-all duration-500"
                 onClick={() => onWallpaperChangeAction(wallpaper.src)}
               >
                 <Image
@@ -68,8 +68,8 @@ export function WallpaperCarousel({
           ))}
         </CarouselContent>
         <div>
-          <CarouselPrevious className=" -left-12" />
-          <CarouselNext className="-right-12" />
+          <CarouselPrevious className="-left-14" />
+          <CarouselNext className="-right-14" />
         </div>
       </Carousel>
     </motion.div>

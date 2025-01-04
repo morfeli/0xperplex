@@ -7,7 +7,7 @@ export default function Home() {
     <div className=" flex flex-col">
       <Nav />
       <main className="flex-grow flex flex-col p-4 font-mono text-sm z-10 space-y-10 fade-in">
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start xl:px-6">
           <h1 className="text-4xl font-bold  text-center text-white">
             0xperplex
           </h1>

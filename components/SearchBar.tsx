@@ -1,30 +1,43 @@
 "use client";
-
-import { useState } from "react";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
+import { useChat } from "ai/react";
+import { useEffect } from "react";
 
 export function SearchBar() {
-  const [query, setQuery] = useState("");
+  const {
+    append,
+    isLoading,
+    messages,
+    input,
+    handleInputChange,
+    handleSubmit,
+  } = useChat();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: Implement search functionality
-    console.log("Searching for:", query);
-  };
+  useEffect(() => {
+    console.log(messages);
+  }, [messages]);
+
+  const noMessages = !messages || messages.length === 0;
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full max-w-sm items-center space-x-2 mb-4"
+      className="flex w-full max-w-md items-center space-x-2 mb-4"
     >
       <Input
         type="text"
         placeholder="Ask a question..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        onChange={handleInputChange}
+        value={input}
       />
-      <Button type="submit">Search</Button>
+      <Button
+        type="submit"
+        variant="secondary"
+        className="rounded-xl py-0 h-10"
+      >
+        Search
+      </Button>
     </form>
   );
 }
