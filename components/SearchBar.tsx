@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Message, useChat } from "ai/react";
 import { Computer, Loader2, Send, User } from "lucide-react";
 
@@ -14,6 +14,7 @@ const MAX_HISTORY_LENGTH = 20; // Adjust as needed
 export function SearchBar() {
   const [dots, setDots] = useState("");
   const [chatHistory, setChatHistory] = useState<Message[]>([]);
+  const scrollRef = useRef<HTMLDivElement>(null); // Reference to the scrollable container
 
   const {
     append,
@@ -86,6 +87,13 @@ export function SearchBar() {
     return () => clearInterval(interval);
   }, []);
 
+  // New useEffect for scrolling
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
+
   const handlePrompt = (promptText: string) => {
     const msg: Message = {
       id: crypto.randomUUID(),
@@ -110,7 +118,10 @@ export function SearchBar() {
       <div className="my-4 flex-shrink-0">
         <PromptSuggestions onSuggestionClickAction={handlePrompt} />
       </div>
-      <div className="flex-1 overflow-y-auto border-2 border-white mb-4 space-y-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 scrollbar-none bg-gradient-to-r from-slate-900 to-slate-700 rounded-3xl p-4">
+      <div
+        ref={scrollRef} // attach the ref here
+        className="flex-1 overflow-y-auto hide-scroll border-2 border-white mb-4 space-y-4 scrollbar-none bg-gradient-to-r from-slate-900 to-slate-700 rounded-3xl p-4"
+      >
         {noMessages ? (
           <p className="flex items-baseline gap-x-1 text-white">
             Results will be shown here <span>{dots}</span>
