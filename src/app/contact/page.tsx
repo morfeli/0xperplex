@@ -28,7 +28,9 @@ export default function ContactPage() {
     <div className="min-h-screen text-white">
       <Nav />
       <main className="container mx-auto px-4 py-12 max-w-3xl fade-in">
-        <h1 className="text-4xl font-bold mb-8 text-center">Contact Us</h1>
+        <h2 className="text-4xl font-bold mb-8 text-center font-mono">
+          Contact Us
+        </h2>
         <div className="bg-black rounded-2xl p-8 shadow-xl">
           <p className="text-lg mb-6">
             Have questions or want to get in touch? Fill out the form below, and
