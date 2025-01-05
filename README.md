@@ -61,6 +61,7 @@ You can use the following scripts to manage the project:
 - 📱 Mobile-first approach, ensuring that the application is optimized for mobile devices first. This design strategy enhances user experience by prioritizing essential content and features for smaller screens, which then scales up to larger devices. This results in faster loading times, improved navigation, and a more intuitive interface across all devices.
 - 💡 Pre-prompt suggestions, offering users helpful hints or example queries to guide them in formulating their questions. This feature improves user engagement by making it easier for them to interact with the AI effectively.
 - 🎨 Logo and background images created using Midjourney, leveraging AI to generate unique and visually appealing assets that enhance the overall aesthetic of the application. Midjourney allows for customization through detailed prompts, resulting in distinctive designs that contribute to the project's branding and user experience.
+- 📜 Results container that scrolls down automatically, ensuring that users can easily view new responses as they arrive without needing to manually scroll. This feature enhances usability by keeping the most recent information in view.
 
 ## 🤝 Contributing
 
