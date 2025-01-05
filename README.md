@@ -6,7 +6,7 @@
 
 - Built with Next.js 15.1.3 for optimal performance and SEO
 - Integrates OpenAI's AI capabilities for intelligent interactions
-- Utilizes Astra DB for efficient data management
+- Utilizes Astra DB for efficient data management and specialized indexing system designed for vector searches, which allows it to quickly locate similar content based on vector embedding
 - Implements a responsive and accessible UI with Radix UI components
 - Employs TailwindCSS for streamlined styling
 
