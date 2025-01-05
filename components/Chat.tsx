@@ -172,7 +172,7 @@ export function Chat() {
           placeholder="Ask a question about space..."
           onChange={handleInputChange}
           value={input}
-          className="rounded-xl py-1 px-2 text-[10px] bg-gradient-to-r from-slate-700 to-slate-300 text-white"
+          className="rounded-xl py-1 px-2 text-[10px] bg-gradient-to-r from-slate-900 to-slate-700 text-white"
         />
         <Button
           type="submit"
@@ -206,8 +206,8 @@ function SearchHistory({
   chatHistory,
 }: SearchHistoryProps) {
   return (
-    <div className="mt-4">
-      <h3 className="text-white text-[12px] mb-2">Search History</h3>
+    <div className="mt-4 bg-gradient-to-r from-slate-900 to-slate-700 border-white border rounded-2xl p-2">
+      <p className="text-white text-[10px] mb-1">Search History</p>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2 xl:flex xl:flex-wrap justify-items-center">
         {chatHistory
           .filter((message) => message.role === "user")
@@ -217,7 +217,7 @@ function SearchHistory({
             <button
               key={message.id || index}
               onClick={() => onHistoryItemClick(message.content)}
-              className="w-fit text-left text-[10px] text-white bg-slate-800 hover:bg-slate-700 rounded-xl py-1 px-2 fade-in leading-4"
+              className="w-fit text-left text-[10px] text-black bg-white hover:bg-white/90 rounded-xl py-1 px-2 fade-in leading-4"
             >
               {message.content}
             </button>

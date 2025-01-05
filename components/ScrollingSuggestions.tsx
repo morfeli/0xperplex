@@ -43,7 +43,7 @@ export function ScrollingSuggestions({
               <Button
                 onClick={() => onSuggestionClickAction(suggestion)}
                 variant="secondary"
-                className="bg-white hover:bg-opacity-30 text-black text-[10px] border-white border-opacity-20 py-0 px-2 h-6 rounded-full shadow-sm transition-all duration-200 ease-in-out hover:shadow-md"
+                className="bg-white hover:bg-white/90 text-black text-[10px] border-white border-opacity-20 py-0 px-2 h-6 rounded-full shadow-sm transition-all duration-200 ease-in-out hover:shadow-md"
               >
                 <p>{suggestion}</p>
               </Button>
