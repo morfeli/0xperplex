@@ -7,7 +7,6 @@ import { Computer, Loader2, Send, User } from "lucide-react";
 import { cn } from "../lib/utils";
 import { PromptSuggestions } from "./PromptSuggestions";
 import { useEffect, useState } from "react";
-import { SearchHistory } from "./SearchHistory";
 
 export function SearchBar() {
   const [dots, setDots] = useState("");
@@ -28,7 +27,12 @@ export function SearchBar() {
     handleInputChange,
     handleSubmit,
     setInput,
+    data,
   } = useChat();
+
+  useEffect(() => {
+    console.log(messages, data);
+  }, [messages, data]);
 
   const handlePrompt = (promptText: string) => {
     const msg: Message = {

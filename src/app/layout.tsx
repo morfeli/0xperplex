@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import "./globals.css";
+import { SessionProvider } from "next-auth/react";
 
 import OxPerplexWallpaper2 from "../../public/assets/Oxperplex-bgwallpaper2.png";
 import { WallpaperProvider } from "../../components/Wallpaper/WallpaperProvider";
