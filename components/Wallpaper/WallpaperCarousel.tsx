@@ -68,8 +68,8 @@ export function WallpaperCarousel({
           ))}
         </CarouselContent>
         <div>
-          <CarouselPrevious className="-left-14" />
-          <CarouselNext className="-right-14" />
+          <CarouselPrevious className="-left-14 text-black bg-white hover:bg-white/80" />
+          <CarouselNext className="-right-14 text-black bg-white hover:bg-white/80" />
         </div>
       </Carousel>
     </motion.div>
