@@ -11,7 +11,7 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content: `You are a helpful assistant. Generate 10 topic suggestions about ${topic}. Generate them as questions such as What is a black hole? What is a worm hole? Does time exisit in space? Etc. Do not list the suggestions with numbers. Make sure to generate new topics whenever this api call is executed. Generate them with a line break if the text is too long`,
+          content: `You are a helpful assistant. Generate 10 topic suggestions about ${topic}. Generate them as questions such as What is a black hole? What is a worm hole? Does time exisit in space? Etc. Do not list the suggestions with numbers. Generate them with a line break if the text is too long`,
         },
       ],
     });

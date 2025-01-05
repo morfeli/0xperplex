@@ -1,5 +1,5 @@
+import { Chat } from "../../components/Chat";
 import { Nav } from "../../components/Nav";
-import { SearchBar } from "../../components/SearchBar";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         </div>
 
         <div className="w-full max-w-[1400px] mx-auto">
-          <SearchBar />
+          <Chat />
         </div>
       </main>
     </div>

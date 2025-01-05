@@ -1,18 +1,37 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import OxPerplexLogo from "../public/assets/0xperplex-logo.png";
 
 export function Nav() {
   return (
-    <nav className="flex justify-between items-center py-2 px-4 bg-transparent font-mono xl:px-10">
-      <Image
-        src={OxPerplexLogo}
-        alt="Oxperplex logo"
-        width={35}
-        height={35}
-        className="rounded-xl"
-      />
-      <p className="text-2xl text-white">0xperplex</p>
-    </nav>
+    <header className="">
+      <div className="mx-auto py-2 flex justify-between items-center bg-black w-full px-10">
+        <Link href="/" className="flex items-center space-x-3">
+          <Image
+            src={OxPerplexLogo}
+            alt="Oxperplex logo"
+            width={35}
+            height={35}
+            className="rounded-xl"
+          />
+          <p className="text-white text-sm font-mono">0xperplex</p>
+        </Link>
+        <nav className="flex items-center">
+          <ul className="flex space-x-8 text-white font-mono text-sm">
+            {["Home", "About", "Contact"].map((item) => (
+              <li key={item}>
+                <Link
+                  href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                  className="hover:text-purple-300 transition-colors duration-200 ease-in-out"
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
   );
 }

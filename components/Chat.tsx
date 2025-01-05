@@ -8,13 +8,13 @@ import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
 import { PromptSuggestions } from "./PromptSuggestions";
 
-const HISTORY_KEY = "chat_history";
+const { HISTORY_KEY } = process.env;
 const MAX_HISTORY_LENGTH = 20; // Adjust as needed
 
-export function SearchBar() {
+export function Chat() {
   const [dots, setDots] = useState("");
   const [chatHistory, setChatHistory] = useState<Message[]>([]);
-  const scrollRef = useRef<HTMLDivElement>(null); // Reference to the scrollable container
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const {
     append,
@@ -30,7 +30,6 @@ export function SearchBar() {
       const aiMessage = messages[messages.length - 1];
 
       if (userMessage && aiMessage) {
-        // Parse and filter the current history to ensure uniqueness
         let storedMessages = JSON.parse(
           localStorage.getItem(HISTORY_KEY) || "[]",
         ).filter(
@@ -41,7 +40,6 @@ export function SearchBar() {
             ),
         );
 
-        // Check if the message pair does not exist
         if (
           !storedMessages.some(
             (msg: Message) =>
@@ -53,7 +51,6 @@ export function SearchBar() {
         ) {
           storedMessages.push(userMessage, aiMessage);
 
-          // Manage history length
           if (storedMessages.length > MAX_HISTORY_LENGTH) {
             storedMessages = storedMessages.slice(-MAX_HISTORY_LENGTH);
           }
@@ -72,7 +69,6 @@ export function SearchBar() {
 
     const savedHistory = localStorage.getItem(HISTORY_KEY);
     if (savedHistory) {
-      // Ensure we only set unique messages in state
       setChatHistory(
         JSON.parse(savedHistory).filter(
           (msg: Message, index: number, self: Message[]) =>
@@ -87,7 +83,6 @@ export function SearchBar() {
     return () => clearInterval(interval);
   }, []);
 
-  // New useEffect for scrolling
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -119,7 +114,7 @@ export function SearchBar() {
         <PromptSuggestions onSuggestionClickAction={handlePrompt} />
       </div>
       <div
-        ref={scrollRef} // attach the ref here
+        ref={scrollRef}
         className="flex-1 overflow-y-auto hide-scroll border-2 border-white mb-4 space-y-4 scrollbar-none bg-gradient-to-r from-slate-900 to-slate-700 rounded-3xl p-4"
       >
         {noMessages ? (
@@ -214,7 +209,7 @@ function SearchHistory({
   return (
     <div className="mt-4">
       <h3 className="text-white text-[12px] mb-2">Search History</h3>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 xl:flex xl:flex-wrap">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 xl:flex xl:flex-wrap justify-items-center">
         {chatHistory
           .filter((message) => message.role === "user")
           .slice(-20)
