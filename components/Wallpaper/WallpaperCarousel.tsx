@@ -50,7 +50,7 @@ export function WallpaperCarousel({
         }}
         className="w-full max-w-[500px]"
       >
-        <CarouselContent className="-ml-2 md:-ml-4">
+        <CarouselContent className="-ml-2 md:-ml-4 mb-4">
           {wallpapers.map((wallpaper) => (
             <CarouselItem key={wallpaper.alt} className="basis-1/3">
               <div
@@ -67,9 +67,9 @@ export function WallpaperCarousel({
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div>
-          <CarouselPrevious className="-left-14 text-black bg-white hover:bg-white/80" />
-          <CarouselNext className="-right-14 text-black bg-white hover:bg-white/80" />
+        <div className="relative w-[5px] mx-auto">
+          <CarouselPrevious className="-left-14 text-black bg-white hover:bg-white/80 scale-75" />
+          <CarouselNext className="-right-14 text-black bg-white hover:bg-white/80 scale-75" />
         </div>
       </Carousel>
     </motion.div>

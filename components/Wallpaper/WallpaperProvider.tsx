@@ -26,7 +26,7 @@ export function WallpaperProvider({
     >
       <div className="min-h-screen">
         {children}
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2">
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 mt-2">
           <WallpaperCarousel onWallpaperChangeAction={handleWallpaperChange} />
         </div>
       </div>

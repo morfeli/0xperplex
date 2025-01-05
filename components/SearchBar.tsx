@@ -1,15 +1,15 @@
 "use client";
-
-import { Input } from "./ui/Input";
-import { Button } from "./ui/Button";
+import { useEffect, useState } from "react";
 import { Message, useChat } from "ai/react";
 import { Computer, Loader2, Send, User } from "lucide-react";
+
 import { cn } from "../lib/utils";
+import { Input } from "./ui/Input";
+import { Button } from "./ui/Button";
 import { PromptSuggestions } from "./PromptSuggestions";
-import { useEffect, useState } from "react";
 
 const HISTORY_KEY = "chat_history";
-const MAX_HISTORY_LENGTH = 100; // Adjust as needed
+const MAX_HISTORY_LENGTH = 20; // Adjust as needed
 
 export function SearchBar() {
   const [dots, setDots] = useState("");
@@ -203,16 +203,16 @@ function SearchHistory({
   return (
     <div className="mt-4">
       <h3 className="text-white text-[12px] mb-2">Search History</h3>
-      <div className="space-y-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2 xl:flex xl:flex-wrap">
         {chatHistory
           .filter((message) => message.role === "user")
-          .slice(-5)
+          .slice(-20)
           .reverse()
           .map((message, index) => (
             <button
               key={message.id || index}
               onClick={() => onHistoryItemClick(message.content)}
-              className="w-full text-left text-[10px] text-white bg-slate-800 hover:bg-slate-700 rounded-xl py-1 px-2 fade-in"
+              className="w-fit text-left text-[10px] text-white bg-slate-800 hover:bg-slate-700 rounded-xl py-1 px-2 fade-in leading-4"
             >
               {message.content}
             </button>
