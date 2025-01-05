@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+0xperplex
+0xperplex is a Next.js-based project that leverages modern web technologies and AI capabilities to create an engaging and interactive user experience.
+Features
+Built with Next.js 15.1.3 for optimal performance and SEO
+Integrates OpenAI's AI capabilities for intelligent interactions
+Utilizes Astra DB for efficient data management
+Implements a responsive and accessible UI with Radix UI components
+Employs TailwindCSS for streamlined styling
+Dependencies
+This project relies on several key dependencies:
+Next.js: The core framework for building the application
+React and React DOM: For building the user interface
+@ai-sdk/openai and openai: For integrating AI capabilities
+@datastax/astra-db-ts: For database interactions with Astra DB
+Radix UI components: For building accessible UI elements
+TailwindCSS: For utility-first CSS styling
+Embla Carousel: For implementing carousels
+Lucide React: For including icons
+Motion: For adding animations
+Installation
+Clone the repository
+Run npm install to install dependencies
+Set up your environment variables (see .env.example if provided)
+Usage
+Development: Run npm run dev to start the development server with Turbopack
+Build: Use npm run build to create a production build
+Start: Execute npm start to run the production server
+Lint: Run npm run lint to check for code quality issues
+Seed: Use npm run seed to run the seeding script (ensure your database is configured)
+Unique Features
+AI-powered interactions using OpenAI's SDK
+Efficient data management with Astra DB integration
+Responsive and accessible UI components from Radix UI
+Smooth animations and transitions using the Motion library
+Custom carousel functionality with Embla CarouselThis is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
