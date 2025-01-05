@@ -55,7 +55,7 @@ You can use the following scripts to manage the project:
 - 💾 Efficient data management with Astra DB integration
 - 🌈 Responsive and accessible UI components from ShadCN UI component library
 - ✨ Smooth animations and transitions using the Motion library
-- 🕒 Search history component, enabling users to easily revisit previous searches and interactions.
+- 🕒 Search history component, enabling users to easily revisit previous searches and interactions. This feature is implemented using localStorage, which stores user prompts in the browser, allowing them to access their search history even after refreshing the page or closing the browser.
 - 🖼️ Wallpaper carousel, allowing users to select and change wallpapers dynamically, enhancing personalization within the application.
 - 🌊 Seamless streaming of AI responses, providing users with a fluid experience as they receive answers in real time, enhancing engagement and interactivity.
 - 📱 Mobile-first approach, ensuring that the application is optimized for mobile devices first. This design strategy enhances user experience by prioritizing essential content and features for smaller screens, which then scales up to larger devices. This results in faster loading times, improved navigation, and a more intuitive interface across all devices.
