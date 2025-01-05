@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import OxPerplexWallpaper2 from "../../public/assets/Oxperplex-bgwallpaper2.png";
 import OxPerplexWallpaper3 from "../../public/assets/Oxperplex-bgwallpaper3.jpg";
