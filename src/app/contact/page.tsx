@@ -1,5 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
-
 import { useState } from "react";
 
 import { Nav } from "../../../components/Nav";
