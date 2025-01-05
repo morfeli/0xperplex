@@ -53,9 +53,13 @@ You can use the following scripts to manage the project:
 
 - 🤖 AI-powered interactions using OpenAI's SDK
 - 💾 Efficient data management with Astra DB integration
-- 🌈 Responsive and accessible UI components from Radix UI
+- 🌈 Responsive and accessible UI components from ShadCN UI component library
 - ✨ Smooth animations and transitions using the Motion library
-- 🎠 Custom carousel functionality with Embla Carousel
+- 🕒 Search history component, enabling users to easily revisit previous searches and interactions.
+- 🖼️ Wallpaper carousel, allowing users to select and change wallpapers dynamically, enhancing personalization within the application.
+- 🌊 Seamless streaming of AI responses, providing users with a fluid experience as they receive answers in real time, enhancing engagement and interactivity.
+- 📱 Mobile-first approach, ensuring that the application is optimized for mobile devices first. This design strategy enhances user experience by prioritizing essential content and features for smaller screens, which then scales up to larger devices. This results in faster loading times, improved navigation, and a more intuitive interface across all devices.
+- 💡 Pre-prompt suggestions, offering users helpful hints or example queries to guide them in formulating their questions. This feature improves user engagement by making it easier for them to interact with the AI effectively.
 
 ## 🤝 Contributing
 
