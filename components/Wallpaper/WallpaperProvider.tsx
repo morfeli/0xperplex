@@ -21,14 +21,12 @@ export function WallpaperProvider({
 
   return (
     <div
-      className="bg-wallpaper bg-cover bg-center bg-no-repeat min-h-screen"
+      className="bg-wallpaper bg-cover bg-center bg-no-repeat min-h-screen flex flex-col"
       style={{ backgroundImage: `url(${wallpaper.src})` }}
     >
-      <div className="min-h-screen">
-        {children}
-        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 mt-2">
-          <WallpaperCarousel onWallpaperChangeAction={handleWallpaperChange} />
-        </div>
+      <div className="flex-grow">{children}</div>
+      <div className="w-fit mx-auto">
+        <WallpaperCarousel onWallpaperChangeAction={handleWallpaperChange} />
       </div>
     </div>
   );

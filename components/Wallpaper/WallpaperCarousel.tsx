@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 import OxPerplexWallpaper2 from "../../public/assets/Oxperplex-bgwallpaper2.png";
 import OxPerplexWallpaper3 from "../../public/assets/Oxperplex-bgwallpaper3.jpg";
@@ -39,7 +39,7 @@ export function WallpaperCarousel({
 }: WallpaperCarouselProps) {
   return (
     <motion.div
-      className="w-full mx-auto px-4"
+      className=" mx-auto px-4 pb-4"
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -50,7 +50,7 @@ export function WallpaperCarousel({
         }}
         className="w-full max-w-[500px]"
       >
-        <CarouselContent className="-ml-2 md:-ml-4 mb-4 md:mb-0">
+        <CarouselContent className="-ml-2 md:-ml-4 mb-4">
           {wallpapers.map((wallpaper) => (
             <CarouselItem key={wallpaper.alt} className="basis-1/3">
               <div
