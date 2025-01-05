@@ -8,8 +8,7 @@ import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
 import { PromptSuggestions } from "./PromptSuggestions";
 
-const { HISTORY_KEY } = process.env;
-const MAX_HISTORY_LENGTH = 20; // Adjust as needed
+const { HISTORY_KEY, MAX_HISTORY_LENGTH } = process.env;
 
 export function Chat() {
   const [dots, setDots] = useState("");
@@ -51,8 +50,8 @@ export function Chat() {
         ) {
           storedMessages.push(userMessage, aiMessage);
 
-          if (storedMessages.length > MAX_HISTORY_LENGTH) {
-            storedMessages = storedMessages.slice(-MAX_HISTORY_LENGTH);
+          if (storedMessages.length > Number(MAX_HISTORY_LENGTH)) {
+            storedMessages = storedMessages.slice(Number(-MAX_HISTORY_LENGTH));
           }
 
           localStorage.setItem(HISTORY_KEY, JSON.stringify(storedMessages));

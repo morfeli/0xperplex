@@ -5,12 +5,12 @@ import { Button } from "./ui/Button";
 
 type ScrollingSuggestionsProps = {
   suggestions: string[];
-  onSuggestionClick: (promptText: string) => void;
+  onSuggestionClickAction: (promptText: string) => void;
 };
 
 export function ScrollingSuggestions({
   suggestions,
-  onSuggestionClick,
+  onSuggestionClickAction,
 }: ScrollingSuggestionsProps) {
   const [isPaused, setIsPaused] = useState(false);
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -41,7 +41,7 @@ export function ScrollingSuggestions({
           {suggestions.map((suggestion, index) => (
             <li key={index} className="inline-block">
               <Button
-                onClick={() => onSuggestionClick(suggestion)}
+                onClick={() => onSuggestionClickAction(suggestion)}
                 variant="secondary"
                 className="bg-white hover:bg-opacity-30 text-black text-[10px] border-white border-opacity-20 py-0 px-2 h-6 rounded-full shadow-sm transition-all duration-200 ease-in-out hover:shadow-md"
               >

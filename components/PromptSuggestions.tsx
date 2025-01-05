@@ -81,7 +81,7 @@ export function PromptSuggestions({
   return (
     <ScrollingSuggestions
       suggestions={dynamicSuggestions}
-      onSuggestionClick={onSuggestionClickAction}
+      onSuggestionClickAction={onSuggestionClickAction}
     />
   );
 }
