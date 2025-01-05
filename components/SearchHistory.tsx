@@ -1,70 +1,54 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { Button } from "./ui/Button";
-import { ScrollArea } from "./ui/ScrollArea";
+import { Message } from "ai/react";
+import { X } from "lucide-react";
 
 interface SearchHistoryProps {
   onHistoryItemClick: (query: string) => void;
+  chatHistory: Message[];
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-export function SearchHistory({ onHistoryItemClick }: SearchHistoryProps) {
-  const [searchHistory, setSearchHistory] = useState<string[]>([]);
-
-  useEffect(() => {
-    // Load search history from localStorage on component mount
-    const savedHistory = localStorage.getItem("searchHistory");
-    if (savedHistory) {
-      setSearchHistory(JSON.parse(savedHistory));
-    }
-  }, []);
-
-  const addToHistory = (query: string) => {
-    const updatedHistory = [
-      query,
-      ...searchHistory.filter((item) => item !== query),
-    ].slice(0, 10);
-    setSearchHistory(updatedHistory);
-    localStorage.setItem("searchHistory", JSON.stringify(updatedHistory));
-  };
-
-  const clearHistory = () => {
-    setSearchHistory([]);
-    localStorage.removeItem("searchHistory");
-  };
-
+export function SearchHistory({
+  onHistoryItemClick,
+  chatHistory,
+  isOpen,
+  onClose,
+}: SearchHistoryProps) {
   return (
-    <div className="w-full max-w-md mx-auto mt-4">
-      <h3 className="text-lg font-semibold mb-2 text-white">Search History</h3>
-      <ScrollArea className="h-40 rounded-md border border-gray-700 bg-gray-800">
-        {searchHistory.length > 0 ? (
-          <ul className="p-4 space-y-2">
-            {searchHistory.map((query, index) => (
-              <li key={index}>
-                <Button
-                  variant="ghost"
-                  className="w-full text-left text-sm text-gray-300 hover:text-white hover:bg-gray-700"
-                  onClick={() => onHistoryItemClick(query)}
-                >
-                  {query}
-                </Button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="p-4 text-sm text-gray-400">No search history yet.</p>
-        )}
-      </ScrollArea>
-      {searchHistory.length > 0 && (
-        <Button
-          variant="outline"
-          size="sm"
-          className="mt-2 text-xs"
-          onClick={clearHistory}
+    <div
+      className={`md:w-64 bg-slate-800 p-4 overflow-y-auto transition-all duration-300 ease-in-out ${
+        isOpen
+          ? "fixed inset-0 z-50 md:relative md:translate-x-0"
+          : "fixed -translate-x-full md:relative md:translate-x-0"
+      }`}
+    >
+      <div className="flex justify-between items-center mb-4 md:hidden">
+        <h3 className="text-white text-lg font-semibold">Search History</h3>
+        <button
+          onClick={onClose}
+          className="text-white hover:text-gray-300 transition-colors duration-200"
         >
-          Clear History
-        </Button>
-      )}
+          <X className="w-6 h-6" />
+        </button>
+      </div>
+      <h3 className="text-white text-[12px] mb-2 hidden md:block">
+        Search History
+      </h3>
+      <div className="space-y-2">
+        {chatHistory
+          .filter((message) => message.role === "user")
+          .slice(-10)
+          .reverse()
+          .map((message, index) => (
+            <button
+              key={message.id || index}
+              onClick={() => onHistoryItemClick(message.content)}
+              className="w-full text-left text-[10px] text-white bg-slate-700 hover:bg-slate-600 rounded-xl py-2 px-3 transition-colors duration-200 fade-in"
+            >
+              {message.content}
+            </button>
+          ))}
+      </div>
     </div>
   );
 }

@@ -8,16 +8,12 @@ import { cn } from "../lib/utils";
 import { PromptSuggestions } from "./PromptSuggestions";
 import { useEffect, useState } from "react";
 
+const HISTORY_KEY = "chat_history";
+const MAX_HISTORY_LENGTH = 100; // Adjust as needed
+
 export function SearchBar() {
   const [dots, setDots] = useState("");
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDots((prev) => (prev.length < 3 ? prev + "." : ""));
-    }, 800);
-
-    return () => clearInterval(interval);
-  }, []);
+  const [chatHistory, setChatHistory] = useState<Message[]>([]);
 
   const {
     append,
@@ -27,12 +23,68 @@ export function SearchBar() {
     handleInputChange,
     handleSubmit,
     setInput,
-    data,
-  } = useChat();
+  } = useChat({
+    onFinish: () => {
+      const userMessage = messages[messages.length - 2];
+      const aiMessage = messages[messages.length - 1];
+
+      if (userMessage && aiMessage) {
+        // Parse and filter the current history to ensure uniqueness
+        let storedMessages = JSON.parse(
+          localStorage.getItem(HISTORY_KEY) || "[]",
+        ).filter(
+          (msg: Message, index: number, self: Message[]) =>
+            index ===
+            self.findIndex(
+              (m) => m.role === msg.role && m.content === msg.content,
+            ),
+        );
+
+        // Check if the message pair does not exist
+        if (
+          !storedMessages.some(
+            (msg: Message) =>
+              (msg.role === userMessage.role &&
+                msg.content === userMessage.content) ||
+              (msg.role === aiMessage.role &&
+                msg.content === aiMessage.content),
+          )
+        ) {
+          storedMessages.push(userMessage, aiMessage);
+
+          // Manage history length
+          if (storedMessages.length > MAX_HISTORY_LENGTH) {
+            storedMessages = storedMessages.slice(-MAX_HISTORY_LENGTH);
+          }
+
+          localStorage.setItem(HISTORY_KEY, JSON.stringify(storedMessages));
+          setChatHistory(storedMessages);
+        }
+      }
+    },
+  });
 
   useEffect(() => {
-    console.log(messages, data);
-  }, [messages, data]);
+    const interval = setInterval(() => {
+      setDots((prev) => (prev.length < 3 ? prev + "." : ""));
+    }, 800);
+
+    const savedHistory = localStorage.getItem(HISTORY_KEY);
+    if (savedHistory) {
+      // Ensure we only set unique messages in state
+      setChatHistory(
+        JSON.parse(savedHistory).filter(
+          (msg: Message, index: number, self: Message[]) =>
+            index ===
+            self.findIndex(
+              (m) => m.role === msg.role && m.content === msg.content,
+            ),
+        ),
+      );
+    }
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handlePrompt = (promptText: string) => {
     const msg: Message = {
@@ -50,7 +102,7 @@ export function SearchBar() {
   const noMessages = !messages || messages.length === 0;
 
   return (
-    <section className="w-full mx-auto  h-[800px] flex flex-col">
+    <section className="w-full mx-auto h-[800px] flex flex-col">
       <h2 className="text-white text-[12px] leading-3">
         Your journey through the cosmos begins here. Ask a question to explore
         the wonders of space.
@@ -131,7 +183,41 @@ export function SearchBar() {
           )}
         </Button>
       </form>
-      {/* <SearchHistory onHistoryItemClick={handleHistoryItemClick} /> */}
+      <SearchHistory
+        onHistoryItemClick={handleHistoryItemClick}
+        chatHistory={chatHistory}
+      />
     </section>
+  );
+}
+
+interface SearchHistoryProps {
+  onHistoryItemClick: (query: string) => void;
+  chatHistory: Message[];
+}
+
+function SearchHistory({
+  onHistoryItemClick,
+  chatHistory,
+}: SearchHistoryProps) {
+  return (
+    <div className="mt-4">
+      <h3 className="text-white text-[12px] mb-2">Search History</h3>
+      <div className="space-y-2">
+        {chatHistory
+          .filter((message) => message.role === "user")
+          .slice(-5)
+          .reverse()
+          .map((message, index) => (
+            <button
+              key={message.id || index}
+              onClick={() => onHistoryItemClick(message.content)}
+              className="w-full text-left text-[10px] text-white bg-slate-800 hover:bg-slate-700 rounded-xl py-1 px-2 fade-in"
+            >
+              {message.content}
+            </button>
+          ))}
+      </div>
+    </div>
   );
 }
