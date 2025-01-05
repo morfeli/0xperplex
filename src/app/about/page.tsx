@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import Image from "next/image";
 import OxPerplexLogo from "../../../public/assets/0xperplex-logo.png";
 import { Nav } from "../../../components/Nav";

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { DiscIcon as Discord, Linkedin, Twitter } from "lucide-react";
 
 import { Nav } from "../../../components/Nav";
 import { Input } from "../../../components/ui/Input";
