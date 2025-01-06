@@ -31,6 +31,7 @@ export function PromptSuggestions({
 
       const data = await response.json();
       if (data.error) {
+        console.log(Error);
         throw new Error(data.error);
       }
       setDynamicSuggestions(data.suggestions || []);

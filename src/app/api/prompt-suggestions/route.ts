@@ -29,9 +29,21 @@ export async function POST(req: Request) {
     return NextResponse.json({ suggestions });
   } catch (error) {
     console.error("Error generating suggestions:", error);
-    return NextResponse.json(
-      { error: "Failed to generate suggestions" },
-      { status: 500 },
-    );
+
+    // Predefined suggestions to send back in case of an error
+    const fallbackSuggestions = [
+      "How did the first stars and galaxies form after the Big Bang?",
+      "What evidence supports the theory of cosmic inflation?",
+      "Can you explain the physics inside a supermassive black hole's event horizon?",
+      "How do black holes potentially connect to other dimensions or universes?",
+      "What are the most promising exoplanets that could potentially harbor life?",
+      "What biochemical conditions are necessary for life to emerge beyond Earth?",
+      "How do neutron star collisions contribute to creating heavy elements in the universe?",
+      "What would happen if two galaxies completely merged?",
+      "What technological breakthroughs are needed to enable human interstellar travel?",
+      "Describe the most realistic scenarios for establishing a permanent human colony on Mars.",
+    ];
+
+    return NextResponse.json({ suggestions: fallbackSuggestions });
   }
 }
