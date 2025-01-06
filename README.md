@@ -1,6 +1,6 @@
 # 0xperplex
 
-0xperplex is a Next.js-based project that leverages modern web technologies and AI capabilities to create an engaging and interactive RAG answer engine with a focus on the users experience.
+0xperplex is a Next.js-based project that leverages modern web technologies and AI capabilities to create an engaging and interactive RAG answer engine with a focus on the user experience.
 
 ## 🌟 Features
 
