@@ -6,7 +6,7 @@ import { Computer, Loader2, Send, User } from "lucide-react";
 import { cn } from "../lib/utils";
 import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
-import { PromptSuggestions } from "./PromptSuggestions";
+import { PromptSuggestions } from "./Prompt/PromptSuggestions";
 
 const { HISTORY_KEY, MAX_HISTORY_LENGTH } = process.env;
 

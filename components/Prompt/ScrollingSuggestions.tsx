@@ -1,7 +1,6 @@
 "use client";
-
 import { useRef, useState } from "react";
-import { Button } from "./ui/Button";
+import { Button } from "../ui/Button";
 
 type ScrollingSuggestionsProps = {
   suggestions: string[];

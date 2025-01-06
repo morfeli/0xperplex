@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { Skeleton } from "./ui/Skeletons";
+import { Skeleton } from "../ui/Skeletons";
 
 export function PromptSuggestionSkeletons() {
   const scrollerRef = useRef<HTMLDivElement>(null);

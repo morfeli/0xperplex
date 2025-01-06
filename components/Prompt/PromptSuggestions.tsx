@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect, useRef } from "react";
 import { PromptSuggestionSkeletons } from "./PromptSuggestionSkeletons";
 import { ScrollingSuggestions } from "./ScrollingSuggestions";
