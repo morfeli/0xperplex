@@ -36,7 +36,6 @@ export async function POST(req: Request) {
     let docContext = "";
 
     try {
-      // Generate embedding using the AI SDK
       const { embedding } = await embed({
         model: openai.embedding("text-embedding-3-small"),
         value: latestMessage,
