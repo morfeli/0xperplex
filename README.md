@@ -19,7 +19,7 @@ This project relies on several key dependencies:
 | Framework | Next.js, React, React DOM |
 | AI Integration | @ai-sdk/openai, openai |
 | Database | @datastax/astra-db-ts |
-| UI Components | @radix-ui/react-dialog, @radix-ui/react-dropdown-menu, @radix-ui/react-scroll-area, @radix-ui/react-slot, @radix-ui/react-toast, Lucide React |
+| UI Components | @radix-ui/react-dialog, @radix-ui/react-slot, ShadCN UI components, Lucide React icons |
 | Styling | TailwindCSS, tailwind-merge, tailwindcss-animate |
 | Animation | Motion, Embla Carousel |
 | Utilities | class-variance-authority, clsx, dotenv |
