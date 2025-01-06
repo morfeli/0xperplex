@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { Message, useChat } from "ai/react";
-import { Computer, Loader2, Send, User } from "lucide-react";
+import { Computer, Loader2, Send, Trash2, User } from "lucide-react";
 
 import { cn } from "../lib/utils";
 import { Input } from "./ui/Input";
@@ -30,13 +30,13 @@ export function Chat() {
 
       if (userMessage && aiMessage) {
         let storedMessages = JSON.parse(
-          localStorage.getItem(HISTORY_KEY) || "[]",
+          localStorage.getItem(HISTORY_KEY) || "[]"
         ).filter(
           (msg: Message, index: number, self: Message[]) =>
             index ===
             self.findIndex(
-              (m) => m.role === msg.role && m.content === msg.content,
-            ),
+              (m) => m.role === msg.role && m.content === msg.content
+            )
         );
 
         if (
@@ -44,8 +44,7 @@ export function Chat() {
             (msg: Message) =>
               (msg.role === userMessage.role &&
                 msg.content === userMessage.content) ||
-              (msg.role === aiMessage.role &&
-                msg.content === aiMessage.content),
+              (msg.role === aiMessage.role && msg.content === aiMessage.content)
           )
         ) {
           storedMessages.push(userMessage, aiMessage);
@@ -73,9 +72,9 @@ export function Chat() {
           (msg: Message, index: number, self: Message[]) =>
             index ===
             self.findIndex(
-              (m) => m.role === msg.role && m.content === msg.content,
-            ),
-        ),
+              (m) => m.role === msg.role && m.content === msg.content
+            )
+        )
       );
     }
 
@@ -129,13 +128,13 @@ export function Chat() {
                 message.role === "user"
                   ? "ml-auto flex-row-reverse"
                   : "mr-auto",
-                isLoading && index === messages.length - 1 && "animate-pulse",
+                isLoading && index === messages.length - 1 && "animate-pulse"
               )}
             >
               <div
                 className={cn(
                   "rounded-full p-2 flex-shrink-0",
-                  message.role === "user" ? "bg-blue-500" : "bg-gray-300",
+                  message.role === "user" ? "bg-blue-500" : "bg-gray-300"
                 )}
               >
                 {message.role === "user" ? (
@@ -147,13 +146,13 @@ export function Chat() {
               <div
                 className={cn(
                   "rounded-xl p-2 w-[85%]",
-                  message.role === "user" ? "bg-blue-100" : "bg-gray-100",
+                  message.role === "user" ? "bg-blue-100" : "bg-gray-100"
                 )}
               >
                 <p
                   className={cn(
                     "text-[10px] leading-4 w-full break-words",
-                    message.role === "user" ? "text-blue-800" : "text-gray-800",
+                    message.role === "user" ? "text-blue-800" : "text-gray-800"
                   )}
                 >
                   {message.content}
@@ -191,6 +190,7 @@ export function Chat() {
       <SearchHistory
         onHistoryItemClick={handleHistoryItemClick}
         chatHistory={chatHistory}
+        setChatHistory={setChatHistory}
       />
     </section>
   );
@@ -199,15 +199,31 @@ export function Chat() {
 type SearchHistoryProps = {
   onHistoryItemClick: (query: string) => void;
   chatHistory: Message[];
+  setChatHistory: React.Dispatch<React.SetStateAction<Message[]>>;
 };
 
 function SearchHistory({
   onHistoryItemClick,
   chatHistory,
+  setChatHistory,
 }: SearchHistoryProps) {
+  const clearHistory = () => {
+    localStorage.removeItem(HISTORY_KEY);
+    setChatHistory([]);
+  };
+
   return (
     <div className="mt-4 bg-gradient-to-r from-slate-900 to-slate-700 border-white border rounded-2xl p-2">
-      <p className="text-white text-[10px] mb-1">Search History</p>
+      <div className="flex justify-between w-full items-center px-2">
+        <p className="text-white text-[10px] mb-1">Search History</p>
+        <button
+          onClick={clearHistory}
+          className="text-white hover:text-red-500 transition-colors duration-200"
+          aria-label="Clear search history"
+        >
+          <Trash2 className="w-4 h-4" />
+        </button>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2 xl:flex xl:flex-wrap justify-items-center">
         {chatHistory
           .filter((message) => message.role === "user")
