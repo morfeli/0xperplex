@@ -18,29 +18,22 @@ export function PromptSuggestions({
   const fetchSuggestions = async () => {
     setIsLoading(true);
     setError(null);
-    try {
-      const response = await fetch("/api/prompt-suggestions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ topic: "Outer Space" }),
-      });
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch suggestions");
-      }
+    const response = await fetch("/api/prompt-suggestions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ topic: "Outer Space" }),
+    });
 
-      const data = await response.json();
-      if (data.error) {
-        console.log(Error);
-        throw new Error(data.error);
-      }
-      setDynamicSuggestions(data.suggestions || []);
-    } catch (error) {
-      setError("Error fetching suggestions. Please try again.");
-      console.error("Error fetching suggestions:", error);
-    } finally {
-      setIsLoading(false);
+    if (!response.ok) {
+      throw new Error("Failed to fetch suggestions");
     }
+
+    const data = await response.json();
+
+    setDynamicSuggestions(data.suggestions || []);
+
+    setIsLoading(false);
   };
 
   const duplicateItemsForScroller = () => {
