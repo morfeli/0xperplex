@@ -63,12 +63,3 @@ You can use the following scripts to manage the project:
 - 🎨 Logo and background images created using Midjourney, leveraging AI to generate unique and visually appealing assets that enhance the overall aesthetic of the application. Midjourney allows for customization through detailed prompts, resulting in distinctive designs that contribute to the project's branding and user experience.
 - 📜 Results container that scrolls down automatically, ensuring that users can easily view new responses as they arrive without needing to manually scroll. This feature enhances usability by keeping the most recent information in view.
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
