@@ -21,7 +21,7 @@ export function WallpaperProvider({
 
   return (
     <div
-      className="bg-wallpaper bg-cover bg-center bg-no-repeat min-h-screen flex flex-col"
+      className="bg-wallpaper bg-cover bg-center bg-no-repeat min-h-screen flex flex-col bg-black"
       style={{ backgroundImage: `url(${wallpaper.src})` }}
     >
       <div className="flex-grow">{children}</div>

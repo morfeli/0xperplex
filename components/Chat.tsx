@@ -196,10 +196,10 @@ export function Chat() {
   );
 }
 
-interface SearchHistoryProps {
+type SearchHistoryProps = {
   onHistoryItemClick: (query: string) => void;
   chatHistory: Message[];
-}
+};
 
 function SearchHistory({
   onHistoryItemClick,
