@@ -84,7 +84,7 @@ export async function POST(req: Request) {
     };
 
     const stream = streamText({
-      model: openai("gpt-4"),
+      model: openai("gpt-4o-mini"),
       messages: [template, ...messages],
     });
 

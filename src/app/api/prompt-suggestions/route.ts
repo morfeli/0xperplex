@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   const { topic } = await req.json();
 
   const response = streamText({
-    model: openai("gpt-4"),
+    model: openai("gpt-4o-mini"),
     messages: [
       {
         role: "system",
